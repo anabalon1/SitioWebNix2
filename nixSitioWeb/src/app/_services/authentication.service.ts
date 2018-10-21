@@ -2,12 +2,16 @@
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
+
 @Injectable()
 export class AuthenticationService {
+  
+    
     constructor(private http: HttpClient) { }
+    
 
     login(email: string, pwd: string) {
-        return this.http.post<any>(`http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario`, { email: email, pwd: pwd })
+        return this.http.post<any>(`http://localhost/slimApiNueva/slimApi/apiCRUD/public/login`, { email: email, pwd: pwd })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {

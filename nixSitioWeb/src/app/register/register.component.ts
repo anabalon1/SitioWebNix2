@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 
-import { AlertService, UserService } from '../_services';
+import { AlertService, UserService, RolService } from '../_services';
 
 @Component({templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
@@ -17,7 +17,8 @@ export class RegisterComponent implements OnInit {
         private router: Router,
         private userService: UserService,
         private alertService: AlertService,
-        private http: HttpClient) { }
+        private http: HttpClient,
+        private rolService: RolService) { }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({

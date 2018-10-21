@@ -64,14 +64,6 @@
                 <div *ngIf="f.puesto.errors.required">puesto is required</div>
             </div>
         </div>
-         <!-- prueba select -->
-     <div class="form-group">
-        <label for="puesto">puesto</label>
-        <input type="number" formControlName="puesto" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.puesto.errors }" />
-        <div *ngIf="submitted && f.puesto.errors" class="invalid-feedback">
-            <div *ngIf="f.puesto.errors.required">puesto is required</div>
-        </div>
-    </div>
     <!-- botones -->
     <div class="form-group">
         <button [disabled]="loading" class="btn btn-primary">Register</button>
