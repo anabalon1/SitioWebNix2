@@ -1,0 +1,88 @@
+﻿<section id="registro" class="mb-5">
+        <div class="contenedor">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="card_register">
+                <div class="card">
+                  <div class="card-body text-center">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <h1 class="h3 mb-3 font-weigh-normal">Registro</h1>
+    <!-- nombre -->
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" />
+        <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+            <div *ngIf="f.nombre.errors.required">First Name is required</div>
+        </div>
+    </div>
+    <!-- apellido -->
+    <div class="form-group">
+        <label for="apellido">Apellido</label>
+        <input type="text" formControlName="apellido" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellido.errors }" />
+        <div *ngIf="submitted && f.apellido.errors" class="invalid-feedback">
+            <div *ngIf="f.apellido.errors.required">Apellido is required</div>
+        </div>
+    </div>
+    <!-- dni -->
+    <div class="form-group">
+            <label for="dni">dni</label>
+            <input type="number" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dni.errors }" />
+            <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
+                <div *ngIf="f.dni.errors.required">el dni es requerido</div>
+            </div>
+        </div>
+    <!-- email -->
+    <div class="form-group">
+        <label for="email">email</label>
+        <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">email is required</div>
+        </div>
+    </div>
+    <!-- password -->
+    <div class="form-group">
+        <label for="pwd">Password</label>
+        <input type="password" formControlName="pwd" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pwd.errors }" />
+        <div *ngIf="submitted && f.pwd.errors" class="invalid-feedback">
+            <div *ngIf="f.pwd.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+    </div>
+     <!-- idRol -->
+     <div class="form-group">
+            <label for="rol">rol</label>
+            <input type="number" formControlName="rol" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.rol.errors }" />
+            <div *ngIf="submitted && f.rol.errors" class="invalid-feedback">
+                <div *ngIf="f.rol.errors.required">rol is required</div>
+            </div>
+        </div>
+         <!-- idPuesto -->
+     <div class="form-group">
+            <label for="puesto">puesto</label>
+            <input type="number" formControlName="puesto" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.puesto.errors }" />
+            <div *ngIf="submitted && f.puesto.errors" class="invalid-feedback">
+                <div *ngIf="f.puesto.errors.required">puesto is required</div>
+            </div>
+        </div>
+         <!-- prueba select -->
+     <div class="form-group">
+        <label for="puesto">puesto</label>
+        <input type="number" formControlName="puesto" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.puesto.errors }" />
+        <div *ngIf="submitted && f.puesto.errors" class="invalid-feedback">
+            <div *ngIf="f.puesto.errors.required">puesto is required</div>
+        </div>
+    </div>
+    <!-- botones -->
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Register</button>
+        <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+    </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
