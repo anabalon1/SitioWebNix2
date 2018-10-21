@@ -1,4 +1,38 @@
-﻿<h1>Hi {{currentUser.user.nombre}}!</h1>
+﻿
+   <section id="modificarNombre" >
+   <div class="contenedor">
+     <div class="row">
+       <div class="col-xs-12 col-sm-6 col-md-4">
+         
+           <div class="card">
+             <div class="card-body text-center">
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype = " multipart / form-data " >
+                    <h1 class="h3 mb-3 font-weigh-normal">Modificar Nombre</h1>
+                    <!-- nombre -->
+                    <div class="form-group">
+                    <label for="modificarNombre">Nombre</label>
+                    <input type="text" formControlName="modificarNombre" placeholder="{{currentUser.user.nombre}}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.modificarNombre.errors }" />
+                    <div *ngIf="submitted && f.modificarNombre.errors" class="invalid-feedback">
+                        <div *ngIf="f.modificarNombre.errors.required">required</div>
+                    </div>
+                    </div>
+
+ <!-- botones -->
+ <div class="form-group">
+        <button class="btn btn-primary">mofificar</button>
+       
+    </div>
+</form>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<p>{{currentUser.user.nombre}}</p>
 <p>You're logged in with Angular 6!!</p>
 <h3>All registered users:</h3>
 <ul>
