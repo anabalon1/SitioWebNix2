@@ -45,8 +45,13 @@ export class UserService {
         return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/' + this.usuario.id, user);
     }
 
-    updatePwd(pwdActual:string,newPwd: string){
-        console.log("pwdActual:",pwdActual,"newPwd:",newPwd)
+    updatePwd(pwdActual:string,newPwd: string , id:number){
+        var passwords = 
+                     {
+                         "password": pwdActual,
+                         "nuevoPass": newPwd
+                     };
+        return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/cambiarPassword/'+id,passwords);
 
     }
 

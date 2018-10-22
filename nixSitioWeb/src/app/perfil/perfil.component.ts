@@ -12,6 +12,7 @@ export class PerfilComponent implements OnInit {
     update: any;
     pwdActual: string;
     newPwd: string;
+    id: number;
 
 
     constructor(private userService: UserService ,private formBuilder: FormBuilder,) {
@@ -51,7 +52,7 @@ export class PerfilComponent implements OnInit {
         });
     }
     onSubmit() {
-        // this.currentUser.user.id
+         // this.currentUser.user.id
          //this.registerForm.
          //this.userService.update()
          
@@ -73,8 +74,10 @@ export class PerfilComponent implements OnInit {
          if(this.registerForm.value.pwdActual != ""){
             this.pwdActual = this.registerForm.value.pwdActual
             this.newPwd = this.registerForm.value.newPassword
-            this.userService.updatePwd(this.pwdActual,this.newPwd)
-
+            this.id = this.currentUser.user.id
+            this.userService.updatePwd(this.pwdActual,this.newPwd,this.id).subscribe(() => { 
+                console.log("password")
+            });
          }
 
          
