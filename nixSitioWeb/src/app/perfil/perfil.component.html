@@ -11,11 +11,20 @@
                     <!-- nombre -->
                     <div class="form-group">
                     <label for="modificarNombre">Nombre</label>
-                    <input type="text" formControlName="modificarNombre" placeholder="{{currentUser.user.nombre}}" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.modificarNombre.errors }" />
+                    <input type="text" formControlName="modificarNombre" placeholder="{{currentUser.user.nombre}}"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.modificarNombre.errors }" />
                     <div *ngIf="submitted && f.modificarNombre.errors" class="invalid-feedback">
                         <div *ngIf="f.modificarNombre.errors.required">required</div>
                     </div>
                     </div>
+
+                     <!-- apellido -->
+                     <div class="form-group">
+                            <label for="modificarApellido">apellido</label>
+                            <input type="text" formControlName="modificarApellido" placeholder="{{currentUser.user.apellido}}"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.modificarApellido.errors }" />
+                            <div *ngIf="submitted && f.modificarApellido.errors" class="invalid-feedback">
+                                <div *ngIf="f.modificarApellido.errors.required">required</div>
+                            </div>
+                            </div>
 
  <!-- botones -->
  <div class="form-group">
