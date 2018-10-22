@@ -7,5 +7,6 @@
     pwd: string;
     rol:number;
     puesto:number;
+    img:File;
     
 }

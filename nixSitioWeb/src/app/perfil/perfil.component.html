@@ -6,7 +6,7 @@
          
            <div class="card">
              <div class="card-body text-center">
-                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype = " multipart / form-data " >
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype ="multipart/form-data">
                     <h1 class="h3 mb-3 font-weigh-normal">Modificar Nombre</h1>
                     <!-- nombre -->
                     <div class="form-group">
@@ -14,6 +14,12 @@
                     <input type="text" formControlName="modificarNombre" placeholder="{{currentUser.user.nombre}}"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.modificarNombre.errors }" />
                     <div *ngIf="submitted && f.modificarNombre.errors" class="invalid-feedback">
                         <div *ngIf="f.modificarNombre.errors.required">required</div>
+                        <!--
+                    <label for="subirImg">img</label>
+                    <input type="file" formControlName="subirImg"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.subirImg.errors }" />
+                    <div *ngIf="submitted && f.subirImg.errors" class="invalid-feedback">
+                        <div *ngIf="f.subirImg.errors.required">required</div>
+                    -->
                     </div>
                     </div>
 
@@ -43,6 +49,7 @@
 
 <p>{{currentUser.user.nombre}}</p>
 <p>You're logged in with Angular 6!!</p>
+
 <h3>All registered users:</h3>
 <ul>
     <li *ngFor="let user of users">
@@ -51,3 +58,6 @@
     </li>
 </ul>
 <p><a [routerLink]="['/login']">Logout</a></p>
+
+
+

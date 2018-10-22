@@ -21,6 +21,8 @@ export class PerfilComponent implements OnInit {
          this.registerForm = this.formBuilder.group({
             modificarNombre: [this.currentUser.user.nombre] ,
             modificarApellido: [this.currentUser.user.apellido]
+            //subirImg: [''] });
+    //}
 
         });
     }
@@ -29,6 +31,12 @@ export class PerfilComponent implements OnInit {
     deleteUser(id: number) {
         this.userService.delete(id).pipe(first()).subscribe(() => { 
             this.loadAllUsers() 
+        });
+    }
+    
+    subirImagen(img : File) {
+        this.userService.subirImg(img).pipe(first()).subscribe(imagen => { 
+            console.log(imagen); 
         });
     }
 
@@ -65,6 +73,15 @@ export class PerfilComponent implements OnInit {
          
         
         
+        //console.log(this.subirImagen(this.registerForm.value))
+       /* this.subirImagen(this.registerForm.value).pipe(first())
+        .subscribe(
+            img => {
+            
+                console.log(this.registerForm.value);
+                
+            });
+*/
     }
     
 }

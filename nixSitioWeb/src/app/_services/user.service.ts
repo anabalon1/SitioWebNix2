@@ -11,6 +11,9 @@ export class UserService {
     getAll() {
         return this.http.get('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario');
     }
+    subirImg(img : File) {
+        return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/subirImg',img);
+    }
 
     getById(id: number) {
         return this.http.get(`${config.apiUrl}/users/` + id);
@@ -25,7 +28,7 @@ export class UserService {
     update(user: any) {
      //   return this.http.put(`${config.apiUrl}/users/` + user.id, user);
      this.usuario = JSON.parse(user)
-     //console.log(user)
+     console.log('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/'+this.usuario.id)
     return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/'+this.usuario.id,user)
     }
 
