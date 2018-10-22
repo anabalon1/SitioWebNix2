@@ -24,9 +24,8 @@ export class UserService {
 
     update(user: any) {
      //   return this.http.put(`${config.apiUrl}/users/` + user.id, user);
-     this.usuario = JSON.parse(user)
-     //console.log(user)
-    return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/'+this.usuario.id,user)
+     this.usuario = JSON.parse(user);
+    return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/'+this.usuario.id,user);
     }
 
     delete(id: number) {

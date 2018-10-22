@@ -45,11 +45,10 @@ export class PerfilComponent implements OnInit {
          if(this.registerForm.value.modificarApellido != ""){
              this.currentUser.user.apellido = this.registerForm.value.modificarApellido
              this.update = JSON.stringify(this.currentUser.user)
-
              this.userService.update(this.update)
              
          }
-         else{
+         /*else{
             this.registerForm.value.modificarApellido = this.currentUser.user.apellido
              console.log( this.registerForm.value.modificarApellido)
          }
@@ -60,7 +59,7 @@ export class PerfilComponent implements OnInit {
          else{
             this.registerForm.value.modificarNombre = this.currentUser.user.nombre
              console.log( this.registerForm.value.modificarNombre)
-         }
+         }*/
 
          
         
