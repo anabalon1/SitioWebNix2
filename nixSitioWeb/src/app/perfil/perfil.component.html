@@ -1,4 +1,4 @@
-﻿
+﻿﻿
    <section id="modificarNombre" >
    <div class="contenedor">
      <div class="row">
@@ -23,27 +23,58 @@
                     </div>
                     </div>
 
-                     <!-- apellido -->
-                     <div class="form-group">
-                            <label for="modificarApellido">apellido</label>
-                            <input type="text" formControlName="modificarApellido" placeholder="{{currentUser.user.apellido}}"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.modificarApellido.errors }" />
-                            <div *ngIf="submitted && f.modificarApellido.errors" class="invalid-feedback">
-                                <div *ngIf="f.modificarApellido.errors.required">required</div>
+                            <!-- apellido -->
+                            <div class="form-group">
+                                <label for="modificarApellido">apellido</label>
+                                <input type="text" formControlName="modificarApellido" placeholder="{{currentUser.user.apellido}}"
+                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.modificarApellido.errors }" />
+                                <div *ngIf="submitted && f.modificarApellido.errors" class="invalid-feedback">
+                                    <div *ngIf="f.modificarApellido.errors.required">required</div>
+                                </div>
                             </div>
+                            <!-- botones -->
+                            <div class="form-group">
+                                <button class="btn btn-primary">mofificar</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- password -->
+                <div class="card">
+                    <div class="card-body text-center">
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype=" multipart / form-data ">
+                            <h1 class="h3 mb-3 font-weigh-normal">Editar Contraseña</h1>
+                            <!-- password Actual-->
+                            <div class="form-group">
+                                <label for="pwdActual">Contraseña Actual</label>
+                                <input type="text" formControlName="pwdActual" placeholder="Contraseña Actual"
+                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pwdActual.errors }" />
+                                <div *ngIf="submitted && f.pwdActual.errors" class="invalid-feedback">
+                                    <div *ngIf="f.pwdActual.errors.required">required</div>
+                                </div>
                             </div>
 
- <!-- botones -->
- <div class="form-group">
-        <button class="btn btn-primary">mofificar</button>
-       
+                            <!-- password nuevo -->
+                            <div class="form-group">
+                                <label for="newPassword">nueva contraseña</label>
+                                <input type="text" formControlName="newPassword" placeholder="nueva contraseña" class="form-control"
+                                    [ngClass]="{ 'is-invalid': submitted && f.newPassword.errors }" />
+                                <div *ngIf="submitted && f.newPassword.errors" class="invalid-feedback">
+                                    <div *ngIf="f.newPassword.errors.required">required</div>
+                                </div>
+                            </div>
+                            <!-- botones -->
+                            <div class="form-group">
+                                <button class="btn btn-primary">mofificar</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</form>
-</div>
-</div>
-</div>
-
-</div>
-</div>
 </section>
 
 
@@ -53,7 +84,7 @@
 <h3>All registered users:</h3>
 <ul>
     <li *ngFor="let user of users">
-         ({{user.nombre}} {{user.apellido}})
+        ({{user.nombre}} {{user.apellido}})
         - <a (click)="deleteUser(user.id)" class="text-danger">Borrar</a>
     </li>
 </ul>

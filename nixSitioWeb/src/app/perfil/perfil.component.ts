@@ -10,6 +10,8 @@ export class PerfilComponent implements OnInit {
     currentUser: any;
     users: any;
     update: any;
+    pwdActual: string;
+    newPwd: string;
 
 
     constructor(private userService: UserService ,private formBuilder: FormBuilder,) {
@@ -19,10 +21,13 @@ export class PerfilComponent implements OnInit {
     ngOnInit() {
         this.loadAllUsers();
          this.registerForm = this.formBuilder.group({
-            modificarNombre: [this.currentUser.user.nombre] ,
-            modificarApellido: [this.currentUser.user.apellido]
+            modificarNombre: '' ,
+            modificarApellido: '',
             //subirImg: [''] });
     //}
+            pwdActual:'',
+            newPassword:''
+
 
         });
     }
@@ -51,23 +56,26 @@ export class PerfilComponent implements OnInit {
          //this.userService.update()
          
          if(this.registerForm.value.modificarApellido != ""){
+             console.log("contenido Apellido")
              this.currentUser.user.apellido = this.registerForm.value.modificarApellido
              this.update = JSON.stringify(this.currentUser.user)
              this.userService.update(this.update)
              
          }
-         /*else{
-            this.registerForm.value.modificarApellido = this.currentUser.user.apellido
-             console.log( this.registerForm.value.modificarApellido)
+         
+         if (this.registerForm.value.modificarNombre != ""){
+            console.log("contenido Apellido")
+             this.currentUser.user.nombre = this.registerForm.value.modificarNombre
+             this.update = JSON.stringify(this.currentUser.user)
+             this.userService.update(this.update)
          }
 
-         if (this.registerForm.value.modificarNombre != ""){
-            console.log(this.registerForm.value.modificarNombre)
+         if(this.registerForm.value.pwdActual != ""){
+            this.pwdActual = this.registerForm.value.pwdActual
+            this.newPwd = this.registerForm.value.newPassword
+            this.userService.updatePwd(this.pwdActual,this.newPwd)
+
          }
-         else{
-            this.registerForm.value.modificarNombre = this.currentUser.user.nombre
-             console.log( this.registerForm.value.modificarNombre)
-         }*/
 
          
         

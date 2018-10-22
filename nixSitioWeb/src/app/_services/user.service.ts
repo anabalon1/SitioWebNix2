@@ -2,6 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 
 import { User } from '../_models';
+import { Console } from '@angular/core/src/console';
 
 @Injectable()
 export class UserService {
@@ -20,21 +21,33 @@ export class UserService {
     }
 
     register(user: User) {
-        
-        return this.http.post(`http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/nuevo`,user);
+
+        return this.http.post(`http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/nuevo`, user);
 
     }
 
     update(user: any) {
+
      //   return this.http.put(`${config.apiUrl}/users/` + user.id, user);
-<<<<<<< HEAD
+
      this.usuario = JSON.parse(user)
      console.log('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/'+this.usuario.id)
     return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/'+this.usuario.id,user)
-=======
+
      this.usuario = JSON.parse(user);
     return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/'+this.usuario.id,user);
->>>>>>> master
+
+
+        //   return this.http.put(`${config.apiUrl}/users/` + user.id, user);
+        this.usuario = JSON.parse(user);
+        console.log(user)
+        console.log('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/' + this.usuario.id)
+        return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/' + this.usuario.id, user);
+    }
+
+    updatePwd(pwdActual:string,newPwd: string){
+        console.log("pwdActual:",pwdActual,"newPwd:",newPwd)
+
     }
 
     delete(id: number) {
