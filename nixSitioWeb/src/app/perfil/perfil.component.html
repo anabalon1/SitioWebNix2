@@ -32,9 +32,18 @@
                                     <div *ngIf="f.modificarApellido.errors.required">required</div>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label for="modificarDni">DNI</label>
+                                <input type="number" formControlName="modificarDni" placeholder="{{currentUser.user.dni}}"
+                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.modificarDni.errors }" />
+                                <div *ngIf="submitted && f.modificarDni.errors" class="invalid-feedback">
+                                    <div *ngIf="f.modificarDni.errors.required">required</div>
+                                </div>
+                            </div>
                             <!-- botones -->
                             <div class="form-group">
-                                <button class="btn btn-primary">mofificar</button>
+                                <button class="btn btn-primary" >Actualizar</button>
 
                             </div>
                         </form>
@@ -48,7 +57,7 @@
                             <!-- password Actual-->
                             <div class="form-group">
                                 <label for="pwdActual">Contraseña Actual</label>
-                                <input type="text" formControlName="pwdActual" placeholder="Contraseña Actual"
+                                <input type="password" formControlName="pwdActual" placeholder="Contraseña Actual"
                                     class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pwdActual.errors }" />
                                 <div *ngIf="submitted && f.pwdActual.errors" class="invalid-feedback">
                                     <div *ngIf="f.pwdActual.errors.required">required</div>
@@ -58,15 +67,16 @@
                             <!-- password nuevo -->
                             <div class="form-group">
                                 <label for="newPassword">nueva contraseña</label>
-                                <input type="text" formControlName="newPassword" placeholder="nueva contraseña" class="form-control"
+                                <input type="password" formControlName="newPassword" placeholder="nueva contraseña" class="form-control"
                                     [ngClass]="{ 'is-invalid': submitted && f.newPassword.errors }" />
                                 <div *ngIf="submitted && f.newPassword.errors" class="invalid-feedback">
                                     <div *ngIf="f.newPassword.errors.required">required</div>
                                 </div>
                             </div>
+                            
                             <!-- botones -->
                             <div class="form-group">
-                                <button class="btn btn-primary">mofificar</button>
+                                <button class="btn btn-primary">Cambiar</button>
 
                             </div>
                         </form>
@@ -85,6 +95,12 @@
 <ul>
     <li *ngFor="let user of users">
         ({{user.nombre}} {{user.apellido}})
+        - <a (click)="deleteUser(user.id)" class="text-danger">Borrar</a>
+    </li>
+</ul>
+<ul>
+    <li *ngFor="let rol of roles">
+        ({{rol.id}} {{rol.rol}})
         - <a (click)="deleteUser(user.id)" class="text-danger">Borrar</a>
     </li>
 </ul>

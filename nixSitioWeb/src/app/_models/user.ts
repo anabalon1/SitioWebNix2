@@ -1,12 +1,12 @@
 ﻿export class User {
-    //id: number;
+    id: number;
     nombre: string;
     apellido: string;
     dni: number;
     email:string;
-    pwd: string;
-    rol:number;
-    puesto:number;
-    img:File;
+    password: string;
+    idRol:number;
+    idPuesto:number;
+    //img:File;
     
 }

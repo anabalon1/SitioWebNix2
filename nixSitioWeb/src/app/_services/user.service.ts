@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 
 import { User } from '../_models';
-import { Console } from '@angular/core/src/console';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -21,28 +21,30 @@ export class UserService {
     }
 
     register(user: User) {
-
-        return this.http.post(`http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/nuevo`, user);
+        
+        return this.http.post(`http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/nuevo`,user);
 
     }
 
     update(user: any) {
-
      //   return this.http.put(`${config.apiUrl}/users/` + user.id, user);
-
      this.usuario = JSON.parse(user)
-     console.log('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/'+this.usuario.id)
-    return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/'+this.usuario.id,user)
+     //console.log(this.usuario)
+     var info  = 
+        {
+            "nombre": this.usuario.nombre,
+            "apellido": this.usuario.apellido,
+            "email": this.usuario.email,
+            "idRol": this.usuario.idRol,
+            "idPuesto": this.usuario.idPuesto,
+            "dni": this.usuario.dni
+        }
+    return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/'+this.usuario.id,info)
+    .pipe(map(res => {
+        localStorage.setItem('currentUser.user', JSON.stringify(this.usuario));
 
-     this.usuario = JSON.parse(user);
-    return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/'+this.usuario.id,user);
-
-
-        //   return this.http.put(`${config.apiUrl}/users/` + user.id, user);
-        this.usuario = JSON.parse(user);
-        console.log(user)
-        console.log('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/' + this.usuario.id)
-        return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/modificar/' + this.usuario.id, user);
+        return res;
+    }))
     }
 
     updatePwd(pwdActual:string,newPwd: string , id:number){
@@ -51,7 +53,7 @@ export class UserService {
                          "password": pwdActual,
                          "nuevoPass": newPwd
                      };
-        return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/cambiarPassword/'+id,passwords);
+        return this.http.post('http://localhost/slimApiNueva/slimApi/apiCRUD/public/cambiarPassword/'+id,passwords);
 
     }
 
