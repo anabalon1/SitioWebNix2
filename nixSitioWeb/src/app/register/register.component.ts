@@ -4,13 +4,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 
-import { AlertService, UserService, RolService } from '../_services';
+import { AlertService, UserService, RolService, PuestoService } from '../_services';
 
 @Component({templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
+    roles : any;
+    puestos : any;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -18,17 +20,32 @@ export class RegisterComponent implements OnInit {
         private userService: UserService,
         private alertService: AlertService,
         private http: HttpClient,
-        private rolService: RolService) { }
+        private rolService: RolService,
+        private puestoService: PuestoService) { }
 
     ngOnInit() {
+        this.loadAllRoles();
+        this.loadAllPuestos();
         this.registerForm = this.formBuilder.group({
             nombre: ['', Validators.required],
             apellido: ['', Validators.required],
-            dni: ['', Validators.required],
+            dni: ['', [Validators.required,Validators.maxLength(8)]],
             email: ['', Validators.required],
             pwd: ['', [Validators.required, Validators.minLength(6)]],
             rol: ['', Validators.required],
             puesto: ['', Validators.required]
+        });
+    }
+
+    private loadAllRoles() {
+        this.rolService.getAll().pipe(first()).subscribe(roles => { 
+            this.roles = roles; 
+        });
+    }
+
+    private loadAllPuestos() {
+        this.puestoService.getAll().pipe(first()).subscribe(puestos => { 
+            this.puestos = puestos; 
         });
     }
 
