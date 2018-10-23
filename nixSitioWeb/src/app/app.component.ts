@@ -2,7 +2,18 @@
 
 @Component({
     selector: 'app',
-    templateUrl: 'app.component.html'
+    templateUrl: 'app.component.html',
+    
 })
 
-export class AppComponent { }
+export class AppComponent { 
+    currentUser: any
+  
+
+
+    constructor() {
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    }
+
+}
+

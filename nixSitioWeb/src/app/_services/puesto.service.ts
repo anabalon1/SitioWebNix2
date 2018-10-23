@@ -12,7 +12,7 @@ export class PuestoService {
     }
 
     getById(id: number) {
-        return this.http.get(`${config.apiUrl}/users/` + id);
+        return this.http.get(`http://localhost/slimApiNueva/slimApi/apiCRUD/public/puesto/` + id);
     }
 
     register(puesto: Puesto) {

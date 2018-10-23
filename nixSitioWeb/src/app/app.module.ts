@@ -7,7 +7,8 @@ import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 
 import { AlertComponent } from './_directives';
-import { AuthGuard } from './_guards';
+import { AuthGuard } from './_guards/auth.guard';
+import { NoAuthGuard } from './_guards/noAuth.guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AlertService, AuthenticationService, UserService, RolService, EstadoService, PuestoService } from './_services';
 import { HomeComponent } from './home';
@@ -32,6 +33,7 @@ import { PerfilComponent } from './perfil'
     ],
     providers: [
         AuthGuard,
+        NoAuthGuard,
         AlertService,
         AuthenticationService,
         UserService,

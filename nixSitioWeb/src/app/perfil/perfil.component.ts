@@ -3,7 +3,7 @@ import { first } from 'rxjs/operators';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { User } from '../_models';
 import { UserService } from '../_services/user.service';
-import { RolService } from '../_services/rol.service';
+import { PuestoService } from '../_services/puesto.service';
 import { Router } from '@angular/router';
 import { DISABLED } from '@angular/forms/src/model';
 
@@ -13,24 +13,31 @@ export class PerfilComponent implements OnInit {
     currentUser: any;
     users: any;
     update: any;
-    roles: any;
+    puestos: any;
     pwdActual: string;
     newPwd: string;
     id: number;
     
+ 
+    
+    
 
 
-    constructor(private rolService: RolService ,private userService: UserService ,private formBuilder: FormBuilder,private router: Router) {
+    constructor(private puestoService: PuestoService ,private userService: UserService ,private formBuilder: FormBuilder,private router: Router) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 
     ngOnInit() {
-        this.loadAllUsers();
-        this.loadAllRol();
+        if(this.currentUser.user.idRol==1){
+            this.loadAllUsers();
+        }
+        
+        this.loadAllPuestos();
          this.registerForm = this.formBuilder.group({
             modificarNombre: '' ,
             modificarApellido: '',
             modificarDni: '',
+            modificarPuesto:'',
             //subirImg: [''] });
     //}
             pwdActual:'',
@@ -38,7 +45,7 @@ export class PerfilComponent implements OnInit {
             
 
         });
-        console.log(this.currentUser)
+        //console.log(this.currentUser)
     }
 
 
@@ -60,9 +67,9 @@ export class PerfilComponent implements OnInit {
         });
     }
 
-    private loadAllRol() {
-        this.rolService.getAll().pipe(first()).subscribe(roles => { 
-            this.roles = roles; 
+    private loadAllPuestos() {
+        this.puestoService.getAll().pipe(first()).subscribe(puestos => { 
+            this.puestos = puestos; 
         });
     }
 
@@ -94,6 +101,13 @@ export class PerfilComponent implements OnInit {
          if (this.registerForm.value.modificarDni != ""){
             //console.log("contenido nombre")
              this.currentUser.user.dni = this.registerForm.value.modificarDni
+             /*this.update = JSON.stringify(this.currentUser.user)
+             this.userService.update(this.update)
+             */
+         }
+         if (this.registerForm.value.modificarPuesto != ""){
+            //console.log(this.registerForm.value.modificarPuesto)
+             this.currentUser.user.idPuesto = this.registerForm.value.modificarPuesto
              /*this.update = JSON.stringify(this.currentUser.user)
              this.userService.update(this.update)
              */
