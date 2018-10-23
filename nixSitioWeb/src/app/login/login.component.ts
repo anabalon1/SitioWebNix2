@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '../_services';
+import { identifierModuleUrl } from '@angular/compiler';
 
 
 @Component({templateUrl: 'login.component.html'})
@@ -50,10 +51,14 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     this.router.navigate([this.returnUrl]);
-                },
-                error => {
-                    this.alertService.error(error);
+                    if(data.error){
+                    this.alertService.error(data.message);
                     this.loading = false;
-                });
+                
+                }
+                    console.log(data)
+
+                },
+               );
     }
 }
