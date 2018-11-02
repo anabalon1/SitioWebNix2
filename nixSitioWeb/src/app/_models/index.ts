@@ -2,3 +2,4 @@
 export * from './rol';
 export * from './estado';
 export * from './puesto';
+export * from './tipoRescate';

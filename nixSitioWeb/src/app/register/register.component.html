@@ -26,7 +26,7 @@
                                 <!-- dni -->
                                 <div class="form-group">
                                     <label for="dni">dni</label>
-                                    <input type="number" formControlName="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dni.errors }" />
+                                    <input type="number" formControlName="dni" id="dni" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dni.errors }" />
                                     <div *ngIf="submitted && f.dni.errors" class="invalid-feedback">
                                         <div *ngIf="f.dni.errors.required">dni es requerido</div>
                                     </div>

@@ -58,6 +58,6 @@ export class UserService {
     }
 
     delete(id: number) {
-        return this.http.delete(`${config.apiUrl}/users/` + id);
+        return this.http.get(`http://localhost/slimApiNueva/slimApi/apiCRUD/public/usuario/eliminar/` + id);
     }
 }

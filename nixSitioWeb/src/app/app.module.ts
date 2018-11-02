@@ -10,8 +10,9 @@ import { AlertComponent } from './_directives';
 import { AuthGuard } from './_guards/auth.guard';
 import { NoAuthGuard } from './_guards/noAuth.guards';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { AlertService, AuthenticationService, UserService, RolService, EstadoService, PuestoService } from './_services';
+import { AlertService, AuthenticationService, UserService, RolService, EstadoService, PuestoService , TipoRescateService} from './_services';
 import { HomeComponent } from './home';
+import { LibroDeAguaComponent } from './libroDeAgua';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
 import { PerfilComponent } from './perfil'
@@ -27,6 +28,7 @@ import { PerfilComponent } from './perfil'
         AppComponent,
         AlertComponent,
         HomeComponent,
+        LibroDeAguaComponent,
         LoginComponent,
         RegisterComponent,
         PerfilComponent
@@ -40,6 +42,7 @@ import { PerfilComponent } from './perfil'
         RolService,
         EstadoService,
         PuestoService,
+        TipoRescateService,
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     ],

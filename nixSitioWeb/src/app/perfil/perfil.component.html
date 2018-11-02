@@ -1,72 +1,66 @@
-﻿﻿
-
-<!--
+﻿﻿<!--
 <ul>
     <li *ngFor="let user of users">
         ({{user.nombre}} {{user.apellido}})
         - <a (click)="deleteUser(user.id)" class="text-danger">Borrar</a>
     </li>
 </ul>-->
-   <section id="modificarNombre" >
-   <div class="contenedor">
-     <div class="row">
-            <div class="col-lg-6  offset-md-0  toppad" >
-                    <div class="card">
-                        <div class="card-body">
-                            <h2 class="card-title">Perfil</h2>
-                            <table class="table table-user-information ">
-                                <tbody>
-                                    <tr>
-                                        <td>Nombre:</td>
-                                        <td>{{currentUser.user.nombre}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Apellido:</td>
-                                        <td>{{currentUser.user.apellido}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Email:</td>
-                                        <td>{{currentUser.user.email}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>DNI:</td>
-                                        <td>{{currentUser.user.dni}}</td>
-                                    </tr>
-                                    <tr *ngFor="let user of users">
-                                                          
-                                        <td>{{user.nombre}} {{user.apellido}}</td>
-                                        <td> <a (click)="deleteUser(user.id)" class="text-danger">Borrar</a></td>
-                                    </tr >
-                                                                                 
-                                  
-                                 
-                                   
-                                </tbody>
-                            </table>
-                            
-                        </div>
+<section id="modificarNombre">
+    <div class="contenedor">
+        <div class="row">
+            <div class="col-lg-6  offset-md-0  toppad">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Perfil</h2>
+                        <table class="table table-user-information ">
+                            <tbody>
+                                <tr>
+                                    <td>Nombre:</td>
+                                    <td>{{currentUser.user.nombre}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Apellido:</td>
+                                    <td>{{currentUser.user.apellido}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td>{{currentUser.user.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td>DNI:</td>
+                                    <td>{{currentUser.user.dni}}</td>
+                                </tr>
+                                <tr *ngFor="let user of users">
+
+                                    <td>{{user.nombre}} {{user.apellido}}</td>
+                                    <td> <a (click)="deleteUser(user.id)" class="text-danger">Borrar</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                
-        <div class="col-lg-3  offset-md-0  toppad" >
-           <div class="card">
-             <div class="card-body text-center">
-                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype ="multipart/form-data">
-                    <h1 class="h3 mb-3 font-weigh-normal">Modificar Perfil</h1>
-                    <!-- nombre -->
-                    <div class="form-group">
-                    <label for="modificarNombre">Nombre</label>
-                    <input type="text" formControlName="modificarNombre" placeholder="{{currentUser.user.nombre}}"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.modificarNombre.errors }" />
-                    <div *ngIf="submitted && f.modificarNombre.errors" class="invalid-feedback">
-                        <div *ngIf="f.modificarNombre.errors.required">required</div>
-                        <!--
+            </div>
+
+            <div class="col-lg-3  offset-md-0  toppad">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+                            <h1 class="h3 mb-3 font-weigh-normal">Modificar Perfil</h1>
+                            <!-- nombre -->
+                            <div class="form-group">
+                                <label for="modificarNombre">Nombre</label>
+                                <input type="text" formControlName="modificarNombre" placeholder="{{currentUser.user.nombre}}"
+                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.modificarNombre.errors }" />
+                                <div *ngIf="submitted && f.modificarNombre.errors" class="invalid-feedback">
+                                    <div *ngIf="f.modificarNombre.errors.required">required</div>
+                                    <!--
                     <label for="subirImg">img</label>
                     <input type="file" formControlName="subirImg"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.subirImg.errors }" />
                     <div *ngIf="submitted && f.subirImg.errors" class="invalid-feedback">
                         <div *ngIf="f.subirImg.errors.required">required</div>
                     -->
-                    </div>
-                    </div>
+                                </div>
+                            </div>
 
                             <!-- apellido -->
                             <div class="form-group">
@@ -98,16 +92,16 @@
                             </div>
                             <!-- botones -->
                             <div class="form-group">
-                                <button class="btn btn-primary" >Actualizar</button>
+                                <button class="btn btn-primary">Actualizar</button>
 
                             </div>
                         </form>
                     </div>
                 </div>
-                </div>
-                
-                <!-- password -->
-                <div class="col-lg-3  offset-md-0  toppad" >
+            </div>
+
+            <!-- password -->
+            <div class="col-lg-3  offset-md-0  toppad">
                 <div class="card">
                     <div class="card-body text-center">
                         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype=" multipart / form-data ">
@@ -125,13 +119,13 @@
                             <!-- password nuevo -->
                             <div class="form-group">
                                 <label for="newPassword">nueva contraseña</label>
-                                <input type="password" formControlName="newPassword" placeholder="nueva contraseña" class="form-control"
-                                    [ngClass]="{ 'is-invalid': submitted && f.newPassword.errors }" />
+                                <input type="password" formControlName="newPassword" placeholder="nueva contraseña"
+                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f.newPassword.errors }" />
                                 <div *ngIf="submitted && f.newPassword.errors" class="invalid-feedback">
                                     <div *ngIf="f.newPassword.errors.required">required</div>
                                 </div>
                             </div>
-                            
+
                             <!-- botones -->
                             <div class="form-group">
                                 <button class="btn btn-primary">Cambiar</button>
@@ -139,20 +133,10 @@
                             </div>
                         </form>
                     </div>
-              
-            </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-
-
-
-
-
-
 <p><a [routerLink]="['/login']">Logout</a></p>
-
-
-

@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '../_services';
-import { identifierModuleUrl } from '@angular/compiler';
 
 
 @Component({templateUrl: 'login.component.html'})
