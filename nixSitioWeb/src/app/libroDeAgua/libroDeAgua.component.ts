@@ -12,8 +12,6 @@ export class LibroDeAguaComponent implements OnInit {
     submitted = false;
     puestos : any;
     tipoRescates : any;
-    rescateAvanzado:['1ros auxilios varios','RCP(reanimacion cardio pulmonar)','TR(asistencioa por traumatismo)','DER(derivacion de victima a hospital)']
-
 
     constructor(
         private formBuilder: FormBuilder,
@@ -43,7 +41,14 @@ export class LibroDeAguaComponent implements OnInit {
             this.tipoRescates = tipoRescates; 
         });
     }
+
     onSubmit() {}
+
+
+
+
+    
+    
 
    
 }

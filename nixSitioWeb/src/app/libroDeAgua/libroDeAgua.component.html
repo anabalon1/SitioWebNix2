@@ -8,31 +8,44 @@
                         <!-- fecha -->
                         <div class="form-group">
                             <label for="fecha">Fecha</label>
-                            <input type="date" formControlName="fecha" class="form-control"  required/>
+                            <input type="date" formControlName="fecha" class="form-control" required />
                         </div>
-                       <!-- Puesto -->
-                       <div class="form-group">
+                        <!-- Puesto -->
+                        <div class="form-group">
                             <label for="puesto">Puesto</label>
                             <select formControlName="puesto" class="form-control" ng-selected="obj.propiedad==1">
                                 <option *ngFor="let puesto of puestos" value="{{puesto.id}}">{{puesto.puesto}}</option>
                             </select>
                         </div>
                         <!-- Hora -->
-                       <div class="form-group">
+                        <div class="form-group">
                             <label for="hora">Hora</label>
-                            <input type="time" formControlName="hora" class="form-control"  required/>
+                            <input type="time" formControlName="hora" class="form-control" required />
                         </div>
-                         <!-- clima -->
-                       <div class="form-group">
+                        <!-- clima -->
+                        <div class="form-group">
                             <label for="clima">clima</label>
-                            <input type="text" formControlName="clima" class="form-control"  placeholder="ej:Soleado" required/>
+                            <input type="text" formControlName="clima" class="form-control" placeholder="ej:Soleado"
+                                required />
                         </div>
                         <!-- tipoRescate -->
                         <div class="form-group">
-                                <label for="tipoRescate">Tipo Rescate</label>
-                                <select formControlName="tipoRescate" class="form-control">
-                                    <option value="{{tipoRescate.id}}" *ngFor="let tipoRescate of tipoRescates" (click)="handleChange(item)">{{tipoRescate.descripcion}}</option>
-                                 </select>
+                            <label for="tipoRescate">Tipo Rescate</label>
+                            <select formControlName="tipoRescate" class="form-control">
+                                <option value="{{tipoRescate.id}}" *ngFor="let tipoRescate of tipoRescates">{{tipoRescate.descripcion}}</option>
+                            </select>
+                        </div>
+                        <!-- 1ros auxilios -->
+                        <div class="form-group">
+                            <label for="primerosAuxilios">1ros Auxilios</label>
+                             <input type="checkbox" formControlName="primerosAuxilios" class="form-control">
+                        </div>
+                        <!-- zona -->
+                        <div class="form-group">
+                                <label for="zona">Zona de intervención</label>
+                                <select formControlName="zonaIntervencion" class="form-control">
+                                        <option value="{{zonaIntervencion.id}}" *ngFor="let zonaIntervencion of zonaIntervenciones" >{{zonaIntervencion.descripcion}}</option>
+                                    </select>
                             </div>
                     </form>
                 </div>
