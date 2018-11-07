@@ -4,3 +4,7 @@ export * from './estado';
 export * from './puesto';
 export * from './tipoRescate';
 export * from './zonaIntervencion';
+export * from './victima';
+export * from './rangoEdad';
+export * from './libroDeAgua';
+export * from './procedencia';

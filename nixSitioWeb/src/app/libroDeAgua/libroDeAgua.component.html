@@ -1,4 +1,4 @@
-<section id="registro" class="mb-5">
+<section id="libroDeAgua"  class="mb-5">
     <div class="contenedor">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4">
@@ -38,15 +38,36 @@
                         <!-- 1ros auxilios -->
                         <div class="form-group">
                             <label for="primerosAuxilios">1ros Auxilios</label>
-                             <input type="checkbox" formControlName="primerosAuxilios" class="form-control">
+                            <input type="checkbox" formControlName="primerosAuxilios" class="form-control">
                         </div>
-                        <!-- zona -->
+                        <!-- zona intervencion-->
                         <div class="form-group">
-                                <label for="zona">Zona de intervención</label>
-                                <select formControlName="zonaIntervencion" class="form-control">
-                                        <option value="{{zonaIntervencion.id}}" *ngFor="let zonaIntervencion of zonaIntervenciones" >{{zonaIntervencion.descripcion}}</option>
-                                    </select>
-                            </div>
+                            <label for="zonaIntervencion">Zona de intervención</label>
+                            <select formControlName="zonaIntervencion" class="form-control">
+                                <option value="{{zonaIntervencion.id}}" *ngFor="let zonaIntervencion of zonaIntervenciones">{{zonaIntervencion.descripcion}}</option>
+                            </select>
+                        </div>
+                        <!-- datosVictima -->
+                        <div class="form-group">
+                            <label for="informacionVictima">informacion de la victima</label>
+                            <label for="rangoEdad">Rango edad</label>
+                            <select formControlName="rangoEdad" class="form-control">
+                                <option value="{{rangoEdad.id}}" *ngFor="let rangoEdad of rangoEdades">{{rangoEdad.descripcion}}</option>
+                            </select>
+                            <label for="rangoEdad">Procedencia</label>
+                            <select formControlName="procedencia" class="form-control">
+                                <option value="{{procedencia.id}}" *ngFor="let procedencia of procedencias">{{procedencia.descripcion}}</option>
+                            </select>
+                        </div>
+                        <!-- Observaciones -->
+                        <button for="observacion" (click)="activarInput()">observacion</button>
+                        <div *ngIf="mostrar" class="form-group">
+                            <textarea class="form-control" formControlName="observacion" rows="4" cols="50"></textarea>
+                        </div>
+                        <!-- boton -->
+                        <div class="form-group">
+                            <button [disabled]="loading" class="btn btn-primary">Subir</button>
+                        </div>
                     </form>
                 </div>
             </div>
