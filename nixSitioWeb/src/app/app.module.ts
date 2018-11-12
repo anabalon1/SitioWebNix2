@@ -15,14 +15,17 @@ import { HomeComponent } from './home';
 import { LibroDeAguaComponent } from './libroDeAgua';
 import { LoginComponent } from './login';
 import { RegisterComponent } from './register';
-import { PerfilComponent } from './perfil'
+import { PerfilComponent } from './perfil';
+import { EstadisticasComponent } from './estadisticas';
+import { ChartsModule } from 'ng2-charts/ng2-charts'
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        routing
+        routing,
+        ChartsModule
     ],
     declarations: [
         AppComponent,
@@ -31,7 +34,8 @@ import { PerfilComponent } from './perfil'
         LibroDeAguaComponent,
         LoginComponent,
         RegisterComponent,
-        PerfilComponent
+        PerfilComponent,
+        EstadisticasComponent
     ],
     providers: [
         AuthGuard,

@@ -44,16 +44,16 @@ export class LibroDeAguaComponent implements OnInit {
         this.loadAllRangoEdad();
         this.loadAllProcedencia();
         this.registerForm = this.formBuilder.group({
-            fecha: ['', Validators.required],
-            puesto: ['', Validators.required],
-            hora: ['', Validators.required],
+            dia: ['', Validators.required],
+            idPuesto: ['', Validators.required],
+            horaRescate: ['', Validators.required],
             clima: ['', Validators.required],
-            tipoRescate: ['', Validators.required],
+            idTipoRescate: ['', Validators.required],
             primerosAuxilios: ['', Validators.required],
-            zonaIntervencion: ['', Validators.required],
-            rangoEdad: ['', Validators.required],
-            observacion: ['', Validators.required],
-            procedencia: ['', Validators.required],
+            idZonaIntervencion: ['', Validators.required],
+            idRangoEdad: ['', Validators.required],
+            observaciones: ['', Validators.required],
+            idProcedencia: ['', Validators.required],
 
         });
 
@@ -90,29 +90,7 @@ export class LibroDeAguaComponent implements OnInit {
 
 
     onSubmit() {
-        this.datos = this.registerForm.value;
-        this.victima = {
-            "idRangoEdad": this.datos.rangoEdad,
-            "idProcedencia": this.datos.procedencia
-        };
-
-
-        //victima
-        this.victimaService.register(this.victima)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.alertService.success('Registro exitoso', true);
-                    this.victimaService.getUltimo().subscribe(ultimaVictima => {
-                        this.ultimaVictima = ultimaVictima;
-                    });
-                    console.log(this.ultimaVictima[0].id);
-                },
-                error => {
-                    this.alertService.error(error);
-                    this.loading = false;
-                });
-
+        console.log(this.registerForm.value);
         //libro
         this.libroDeAgua.register(this.registerForm.value)
             .pipe(first())

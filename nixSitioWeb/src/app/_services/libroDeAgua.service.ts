@@ -10,6 +10,16 @@ export class LibroDeAguaService {
     getAll() {
         return this.http.get('http://localhost/slimApiNueva/slimApi/apiCRUD/public/libroDeAgua');
     }
+    
+    getRescates(){
+        
+        return this.http.get('http://localhost/slimApiNueva/slimApi/apiCRUD/public/libroDeAgua/rescates');
+    }
+    getRangoEdad(){
+        
+        return this.http.get('http://localhost/slimApiNueva/slimApi/apiCRUD/public/libroDeAgua/rangoedad');
+    }
+    
 
     getById(id: number) {
         return this.http.get(`${config.apiUrl}/users/` + id);

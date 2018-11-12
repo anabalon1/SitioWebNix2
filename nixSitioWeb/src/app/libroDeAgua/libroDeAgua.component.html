@@ -7,20 +7,20 @@
                         <h1 class="h3 mb-3 font-weigh-normal">Libro de Agua</h1>
                         <!-- fecha -->
                         <div class="form-group">
-                            <label for="fecha">Fecha</label>
-                            <input type="date" formControlName="fecha" class="form-control" required />
+                            <label for="dia">Fecha</label>
+                            <input type="date" formControlName="dia" class="form-control" required />
                         </div>
                         <!-- Puesto -->
                         <div class="form-group">
                             <label for="puesto">Puesto</label>
-                            <select formControlName="puesto" class="form-control" ng-selected="obj.propiedad==1">
+                            <select formControlName="idPuesto" class="form-control" ng-selected="obj.propiedad==1">
                                 <option *ngFor="let puesto of puestos" value="{{puesto.id}}">{{puesto.puesto}}</option>
                             </select>
                         </div>
                         <!-- Hora -->
                         <div class="form-group">
-                            <label for="hora">Hora</label>
-                            <input type="time" formControlName="hora" class="form-control" required />
+                            <label for="horaRescate">Hora</label>
+                            <input type="time" formControlName="horaRescate" class="form-control" required />
                         </div>
                         <!-- clima -->
                         <div class="form-group">
@@ -31,7 +31,7 @@
                         <!-- tipoRescate -->
                         <div class="form-group">
                             <label for="tipoRescate">Tipo Rescate</label>
-                            <select formControlName="tipoRescate" class="form-control">
+                            <select formControlName="idTipoRescate" class="form-control">
                                 <option value="{{tipoRescate.id}}" *ngFor="let tipoRescate of tipoRescates">{{tipoRescate.descripcion}}</option>
                             </select>
                         </div>
@@ -43,7 +43,7 @@
                         <!-- zona intervencion-->
                         <div class="form-group">
                             <label for="zonaIntervencion">Zona de intervención</label>
-                            <select formControlName="zonaIntervencion" class="form-control">
+                            <select formControlName="idZonaIntervencion" class="form-control">
                                 <option value="{{zonaIntervencion.id}}" *ngFor="let zonaIntervencion of zonaIntervenciones">{{zonaIntervencion.descripcion}}</option>
                             </select>
                         </div>
@@ -51,18 +51,18 @@
                         <div class="form-group">
                             <label for="informacionVictima">informacion de la victima</label>
                             <label for="rangoEdad">Rango edad</label>
-                            <select formControlName="rangoEdad" class="form-control">
+                            <select formControlName="idRangoEdad" class="form-control">
                                 <option value="{{rangoEdad.id}}" *ngFor="let rangoEdad of rangoEdades">{{rangoEdad.descripcion}}</option>
                             </select>
-                            <label for="rangoEdad">Procedencia</label>
-                            <select formControlName="procedencia" class="form-control">
+                            <label for="procedencia">Procedencia</label>
+                            <select formControlName="idProcedencia" class="form-control">
                                 <option value="{{procedencia.id}}" *ngFor="let procedencia of procedencias">{{procedencia.descripcion}}</option>
                             </select>
                         </div>
                         <!-- Observaciones -->
-                        <button for="observacion" (click)="activarInput()">observacion</button>
+                        <input type="button" for="observaciones" (click)="activarInput()" value="observaciones">
                         <div *ngIf="mostrar" class="form-group">
-                            <textarea class="form-control" formControlName="observacion" rows="4" cols="50"></textarea>
+                            <textarea class="form-control" formControlName="observaciones" rows="4" cols="50"></textarea>
                         </div>
                         <!-- boton -->
                         <div class="form-group">
