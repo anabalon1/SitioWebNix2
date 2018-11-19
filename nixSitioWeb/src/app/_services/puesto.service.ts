@@ -11,6 +11,10 @@ export class PuestoService {
         return this.http.get('http://localhost/slimApiNueva/slimApi/apiCRUD/public/puesto');
     }
 
+    getLocalidad(id:number){
+        return this.http.get('http://localhost/slimApiNueva/slimApi/apiCRUD/public/puesto/localidad/'+id);
+    }
+
     getById(id: number) {
         return this.http.get(`http://localhost/slimApiNueva/slimApi/apiCRUD/public/puesto/` + id);
     }

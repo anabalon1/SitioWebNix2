@@ -11,6 +11,7 @@ import { RangoEdad } from '../_models';
 export class EstadisticasComponent implements OnInit {
   public tiporescate: Array<string>;
   public cantidad: any;
+  public cantidadIntervencion: Array<number> = [];
   prevencion: number;
   rescateSencillo: number;
   rescateComplicado: number;
@@ -24,7 +25,8 @@ export class EstadisticasComponent implements OnInit {
 
   ngOnInit() {
     this.rescates();
-    console.log(this.cantidad)
+    this.rangoEdad();
+    this.intervenciones();
   }
 
 //----------Grafico de dona----------//
@@ -48,11 +50,7 @@ export class EstadisticasComponent implements OnInit {
       }
     });
 
-    this.libroService.getRangoEdad().pipe(first()).subscribe(RangoEdad => {
-      console.log("rango")
-      console.log(RangoEdad[0].total)
-      this.totalRangoEdad = RangoEdad
-    });
+    
   }
   // Doughnut
   public doughnutChartLabels: string[] = ['Prevencion', 'Rescate Sencillo', 'Rescate Complicado', 'Rescate Avanzado'];
@@ -68,10 +66,43 @@ export class EstadisticasComponent implements OnInit {
     console.log(e);
   }
 
+ //----------Grafico de Torta----------//
+ public intervenciones() {
+  this.libroService.getPrimerosAuxilios().pipe(first()).subscribe(auxilios => {
+    if (auxilios != null) {
+        this.cantidadIntervencion[0] = auxilios[0].cantidad;
+    }})
+    
+  this.libroService.getRcp().pipe(first()).subscribe(rcps => {
+    if (rcps != null) {
+        this.cantidadIntervencion[1] = rcps[0].cantidad;
+    }})
+
+  this.libroService.getTraumatismo().pipe(first()).subscribe(traumatismos => {
+    if (traumatismos != null) {
+        this.cantidadIntervencion[2] = traumatismos[0].cantidad;
+    }})
+
+  this.libroService.getOtros().pipe(first()).subscribe(otrasIntervenciones => {
+    if (otrasIntervenciones != null) {
+        this.cantidadIntervencion[3] = otrasIntervenciones[0].cantidad;
+    }})
+    //this.cantidadIntervencion.push(this.rcp);
+      console.log(this.cantidadIntervencion);
+    
+  };
+ // Pie
+ public pieChartLabels:string[] = ['1° Auxilios', 'RCP', 'Traumatismos', 'Otros'];
+ //public pieChartData:number[] = [300, 500, 100, 250];
+ public pieChartType:string = 'pie';
+
+ 
   //----------Grafico de barras----------//
-  
-
-
+  public rangoEdad() {
+    this.libroService.getRangoEdad().pipe(first()).subscribe(RangoEdad => {
+      this.totalRangoEdad = RangoEdad
+    });
+  }
   public barChartOptions:any = {
     scaleShowVerticalLines: false,
     responsive: true
@@ -84,5 +115,5 @@ export class EstadisticasComponent implements OnInit {
     {data: [28, 48, 40, 19, 86, 27, 90, 23,32,44], label: 'RangoEdad'}
   ];
 
- 
+
 }

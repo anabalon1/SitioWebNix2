@@ -10,8 +10,8 @@ export class AuthenticationService {
     constructor(private http: HttpClient) { }
     
 
-    login(email: string, pwd: string) {
-        return this.http.post<any>(`http://localhost/slimApiNueva/slimApi/apiCRUD/public/login`, { email: email, pwd: pwd })
+    login(dni: number, pwd: string) {
+        return this.http.post<any>(`http://localhost/slimApiNueva/slimApi/apiCRUD/public/login`, { dni: dni, pwd: pwd })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {

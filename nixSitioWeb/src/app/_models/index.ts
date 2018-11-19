@@ -8,3 +8,4 @@ export * from './victima';
 export * from './rangoEdad';
 export * from './libroDeAgua';
 export * from './procedencia';
+export * from './rescateAvanzado';

@@ -1,25 +1,27 @@
-
-<div class="row">
-  <div class="col-md-8">
-      <h1>Estadisticas por tipos de rescates </h1>
-    <div  style="display: block">
-  <canvas  baseChart
-              [data]=[cantidad[0],cantidad[1],cantidad[2],cantidad[3]]
-              [labels]="doughnutChartLabels"
-              [chartType]="doughnutChartType"
-              (chartHover)="chartHovered($event)"
-              (chartClick)="chartClicked($event)"></canvas>
-</div>
-<h1>Estadisticas por rango edad</h1>
-<div style="display: block">
-    <canvas baseChart
-            [datasets]="barChartData"
-            [labels]="barChartLabels"
-            [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [chartType]="barChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
+<body>
+  <div class="row">
+  <div class="col-md-6">
+    <h1>Estadisticas por tipos de rescates </h1>
+    <div style="display: block" *ngIf="!!cantidad">
+      <canvas baseChart [data]=[cantidad[0],cantidad[1],cantidad[2],cantidad[3]] [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+    </div>
   </div>
+  <div class="col-md-6">
+    <h1>Estadisticas por intervenciones</h1>
+    <div style="display: block" *ngIf="!!cantidadIntervencion">
+      <canvas baseChart [data]=[cantidadIntervencion[0],cantidadIntervencion[1],cantidadIntervencion[2],cantidadIntervencion[3]] [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+    </div>
   </div>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+    <h1>Estadisticas por rango edad</h1>
+    <div style="display: block">
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+        [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+    
 </div>
+</body>

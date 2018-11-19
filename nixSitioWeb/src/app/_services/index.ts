@@ -10,3 +10,5 @@ export * from './victima.service';
 export * from './rangoEdad.service';
 export * from './libroDeAgua.service';
 export * from './procedencia.service';
+export * from './rescateAvanzado.service';
+export * from './clima.service'

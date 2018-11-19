@@ -19,6 +19,25 @@ export class LibroDeAguaService {
         
         return this.http.get('http://localhost/slimApiNueva/slimApi/apiCRUD/public/libroDeAgua/rangoedad');
     }
+    getPrimerosAuxilios(){
+        
+        return this.http.get('http://localhost/slimApiNueva/slimApi/apiCRUD/public/libroDeAgua/primerosAuxilios');
+    }
+
+    getRcp(){
+        
+        return this.http.get('http://localhost/slimApiNueva/slimApi/apiCRUD/public/libroDeAgua/rcp');
+    }
+
+    getTraumatismo(){
+        
+        return this.http.get('http://localhost/slimApiNueva/slimApi/apiCRUD/public/libroDeAgua/traumatismo');
+    }
+
+    getOtros(){
+        
+        return this.http.get('http://localhost/slimApiNueva/slimApi/apiCRUD/public/libroDeAgua/otros');
+    }
     
 
     getById(id: number) {

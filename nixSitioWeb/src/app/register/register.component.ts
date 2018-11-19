@@ -6,7 +6,10 @@ import {HttpClient} from '@angular/common/http';
 
 import { AlertService, UserService, RolService, PuestoService } from '../_services';
 
-@Component({templateUrl: 'register.component.html'})
+@Component({
+    templateUrl: 'register.component.html',
+    styleUrls: ['./register.component.css']
+})
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
@@ -29,8 +32,8 @@ export class RegisterComponent implements OnInit {
         this.registerForm = this.formBuilder.group({
             nombre: ['', Validators.required],
             apellido: ['', Validators.required],
-            dni: ['', [Validators.required]],
-            email: ['', Validators.required],
+            dni: ['', [Validators.required, Validators.max(70000000)]],
+            email: ['', Validators.required,Validators.email],
             pwd: ['', [Validators.required, Validators.minLength(6)]],
             rol: ['', Validators.required],
             puesto: ['', Validators.required]

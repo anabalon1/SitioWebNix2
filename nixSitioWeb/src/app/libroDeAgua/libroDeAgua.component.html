@@ -1,7 +1,8 @@
 <section id="libroDeAgua"  class="mb-5">
     <div class="contenedor">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="col-xs-12 col-sm-6 col-md-3"></div>
+            <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="text-center">
                     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
                         <h1 class="h3 mb-3 font-weigh-normal">Libro de Agua</h1>
@@ -25,15 +26,28 @@
                         <!-- clima -->
                         <div class="form-group">
                             <label for="clima">clima</label>
-                            <input type="text" formControlName="clima" class="form-control" placeholder="ej:Soleado"
-                                required />
+                            <p>{{clima}}</p>
                         </div>
                         <!-- tipoRescate -->
                         <div class="form-group">
                             <label for="tipoRescate">Tipo Rescate</label>
-                            <select formControlName="idTipoRescate" class="form-control">
-                                <option value="{{tipoRescate.id}}" *ngFor="let tipoRescate of tipoRescates">{{tipoRescate.descripcion}}</option>
+                            <select formControlName="idTipoRescate" class="form-control" >
+                                <option value="{{tipoRescate.id}}" (click)="activarOpciones()" *ngFor="let tipoRescate of tipoRescates">{{tipoRescate.descripcion}}</option>
                             </select>
+                            <!-- rescateAvanzado -->
+                            
+                                <div class="form-grup" *ngIf = "opciones">
+                                        <label for="traumatismo">Traumatismo</label>
+                                        <input type="checkbox" formControlName="traumatismo" class="form-control">
+                                        <label for="rcp">RCP</label>
+                                        <input type="checkbox" formControlName="rcp" class="form-control">
+                                        <label for="derivacion">derivacion a hospital</label>
+                                        <input type="checkbox" formControlName="derivacion" class="form-control">
+                                </div>
+                            
+                            
+                             
+                            
                         </div>
                         <!-- 1ros auxilios -->
                         <div class="form-group">
